@@ -1,0 +1,227 @@
+.toy-input {
+  --toy-input-text-color: var(--toy-text-color-regular);
+  --toy-input-border: var(--toy-border);
+  --toy-input-hover-border: var(--toy-border-color-hover);
+  --toy-input-focus-border: var(--toy-color-primary);
+  --toy-input-transparent-border: 0 0 0 1px transparent inset;
+  --toy-input-border-color: var(--toy-border-color);
+  --toy-input-border-radius: var(--toy-border-radius-base);
+  --toy-input-bg-color: var(--toy-fill-color-blank);
+  --toy-input-icon-color: var(--toy-text-color-placeholder);
+  --toy-input-placeholder-color: var(--toy-text-color-placeholder);
+  --toy-input-hover-border-color: var(--toy-border-color-hover);
+  --toy-input-clear-hover-color: var(--toy-text-color-secondary);
+  --toy-input-focus-border-color: var(--toy-color-primary);
+}
+
+.toy-input {
+  --toy-input-height: var(--toy-component-size);
+  position: relative;
+  font-size: var(--toy-font-size-base);
+  display: inline-flex;
+  width: 100%;
+  line-height: var(--toy-input-height);
+  box-sizing: border-box;
+  vertical-align: middle;
+  &.is-disabled {
+    cursor: not-allowed;
+    .toy-input__wrapper {
+      background-color: var(--toy-disabled-bg-color);
+      box-shadow: 0 0 0 1px var(--toy-disabled-border-color) inset;
+    }
+    .toy-input__inner {
+      color: var(--toy-disabled-text-color);
+      -webkit-text-fill-color: var(--toy-disabled-text-color);
+      cursor: not-allowed;
+    }
+    .toy-textarea__inner {
+      background-color: var(--toy-disabled-bg-color);
+      box-shadow: 0 0 0 1px var(--toy-disabled-border-color) inset;
+      color: var(--toy-disabled-text-color);
+      -webkit-text-fill-color: var(--toy-disabled-text-color);
+      cursor: not-allowed;
+    }
+  }
+  &.is-prepend {
+    >.toy-input__wrapper {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+  }
+  &.is-append {
+    >.toy-input__wrapper {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+}
+
+.toy-input--large {
+  --toy-input-height: var(--toy-component-size-large);
+  font-size: 14px;
+  .toy-input__wrapper {
+    padding: 1px 15px;
+    .toy-input__inner {
+      --toy-input-inner-height: calc(var(--toy-input-height, 40px) - 2px);
+    }
+  }
+
+}
+.toy-input--small {
+  --toy-input-height: var(--toy-component-size-small);
+  font-size: 12px;
+  .toy-input__wrapper {
+    padding: 1px 7px;
+    .toy-input__inner {
+      --toy-input-inner-height: calc(var(--toy-input-height, 24px) - 2px);
+    }
+  }
+}
+.toy-input__prefix, .toy-input__suffix {
+  display: inline-flex;
+  white-space: nowrap;
+  flex-shrink: 0;
+  flex-wrap: nowrap;
+  height: 100%;
+  text-align: center;
+  color: var(--toy-input-icon-color, var(--toy-text-color-placeholder));
+  transition: all var(--toy-transition-duration);
+}
+.toy-input__prefix {
+  >:first-child {
+    margin-left: 0px !important;
+  }
+  >:last-child {
+    margin-right: 8px !important;
+  }
+}
+.toy-input__suffix {
+  >:first-child {
+    margin-left: 8px !important;
+  }
+  >:last-child {
+    margin-right: 0px !important;
+  }
+}
+.toy-input__prepend, .toy-input__append {
+  background-color: var(--toy-fill-color-light);
+  color: var(--toy-color-info);
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  border-radius: var(--toy-input-border-radius);
+  padding: 0 20px;
+  white-space: nowrap;
+}
+.toy-input__prepend {
+  border-right: 0;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+  box-shadow: 1px 0 0 0 var(--toy-input-border-color) inset,0 1px 0 0 var(--toy-input-border-color) inset,0 -1px 0 0 var(--toy-input-border-color) inset;
+
+}
+.toy-input__append {
+  border-left: 0;
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  box-shadow: 0 1px 0 0 var(--toy-input-border-color) inset,0 -1px 0 0 var(--toy-input-border-color) inset,-1px 0 0 0 var(--toy-input-border-color) inset;
+  & >.toy-input__wrapper {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+}
+
+.toy-input--textarea {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  vertical-align: bottom;
+  font-size: var(--toy-font-size-base);
+}
+.toy-textarea__wrapper {
+  position: relative;
+  display: block;
+  resize: vertical;
+  padding: 5px 11px;
+  line-height: 1.5;
+  box-sizing: border-box;
+  width: 100%;
+  font-size: inherit;
+  font-family: inherit;
+  color: var(--toy-input-text-color, var(--toy-text-color-regular));
+  background-color: var(--toy-input-bg-color, var(--toy-fill-color-blank));
+  background-image: none;
+  -webkit-appearance: none;
+  appearance: none;
+  box-shadow: 0 0 0 1px var(--toy-input-border-color, var(--toy-border-color)) inset;
+  border-radius: var(--toy-input-border-radius, var(--toy-border-radius-base));
+  transition: var(--toy-transition-box-shadow);
+  border: none;
+  &:focus {
+    outline: none;
+    box-shadow: 0 0 0 1px var(--toy-input-focus-border-color) inset;
+  }
+  &::placeholder {
+    color: var(--toy-input-placeholder-color);
+  }
+}
+.toy-input__wrapper {
+  display: inline-flex;
+  flex-grow: 1;
+  align-items: center;
+  justify-content: center;
+  padding: 1px 11px;
+  background-color: var(--toy-input-bg-color, var(--toy-fill-color-blank));
+  background-image: none;
+  border-radius: var(--toy-input-border-radius, var(--toy-border-radius-base));
+  transition: var(--toy-transition-box-shadow);
+  box-shadow: 0 0 0 1px var(--toy-input-border-color, var(--toy-border-color)) inset;
+  &:hover {
+    box-shadow: 0 0 0 1px var(--toy-input-hover-border-color) inset;
+  }
+  &.is-focus {
+    box-shadow: 0 0 0 1px var(--toy-input-focus-border-color) inset;
+  }
+  .toy-input__inner {
+    --toy-input-inner-height: calc(var(--toy-input-height, 32px) - 2px);
+    width: 100%;
+    flex-grow: 1;
+    -webkit-appearance: none;
+    color: var(--toy-input-text-color, var(--toy-text-color-regular));
+    font-size: inherit;
+    height: var(--toy-input-inner-height);
+    line-height: var(--toy-input-inner-height);
+    padding: 0;
+    outline: none;
+    border: none;
+    background: none;
+    box-sizing: border-box;
+    &::placeholder {
+      color: var(--toy-input-placeholder-color);
+    }
+  }
+  .toy-icon {
+    height: inherit;
+    line-height: inherit;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all var(--toy-transition-duration);
+    margin-left: 8px;
+  }
+  .toy-input__clear, .toy-input__password {
+    color: var(--toy-input-icon-color);
+    font-size: 14px;
+    cursor: pointer;
+    &:hover {
+     color: var(--toy-input-clear-hover-color);
+    }
+  }
+}
+
+// 针对edge浏览器去掉密码框眼睛图标
+input[type="password"]::-ms-reveal {
+  display: none;
+}

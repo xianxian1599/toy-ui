@@ -1,0 +1,17 @@
+{
+  "extends": "@vue/tsconfig/tsconfig.web.json",
+  "include": ["src/index.ts", "src/components/**/*", "src/hooks/**/*"],
+  "compilerOptions": {
+    "jsx": "preserve",
+    "baseUrl": ".",
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "vueCompilerOptions": {},
+  "references": [
+    {
+      "path": "./tsconfig.config.json"
+    }
+  ]
+}

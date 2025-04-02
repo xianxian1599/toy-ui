@@ -1,0 +1,87 @@
+// 组件库颜色设置
+@use "sass:color"; // 引入颜色模块
+
+:root {
+  // 基础颜色
+  --toy-color-white: #ffffff;
+  --toy-color-black: #000000;
+
+  // 颜色生成体系
+  $color-map: (
+    primary: #409eff,
+    success: #67c23a,
+    warning: #e6a23c,
+    danger: #f56c6c,
+    info: #909399
+  );
+
+  @each $val, $color in $color-map {
+    --toy-color-#{$val}: #{$color};
+
+    // 生成奇数阶浅色
+    @for $i from 3 through 9 {
+      @if $i % 2 == 1 {
+        --toy-color-#{$val}-light-#{$i}: #{color.mix(rgb(255 255 255), $color, $i * 10%)};
+      }
+    }
+
+    // 特殊浅色处理
+    --toy-color-#{$val}-light-8: #{color.mix(rgb(255 255 255), $color, 80%)};
+
+    // 深色生成
+    --toy-color-#{$val}-dark-2: #{color.mix(rgb(0 0 0), $color, 20%)};
+  }
+
+  --toy-bg-color: #ffffff;
+  --toy-bg-color-page: #f2f3f5;
+  --toy-bg-color-overlay: #ffffff;
+  --toy-text-color-primary: #303133;
+  --toy-text-color-regular: #606266;
+  --toy-text-color-secondary: #909399;
+  --toy-text-color-placeholder: #a8abb2;
+  --toy-text-color-disabled: #c0c4cc;
+  --toy-border-color: #dcdfe6;
+  --toy-border-color-light: #e4e7ed;
+  --toy-border-color-lighter: #ebeef5;
+  --toy-border-color-extra-light: #f2f6fc;
+  --toy-border-color-dark: #d4d7de;
+  --toy-border-color-darker: #cdd0d6;
+  --toy-fill-color: #f0f2f5;
+  --toy-fill-color-light: #f5f7fa;
+  --toy-fill-color-lighter: #fafafa;
+  --toy-fill-color-extra-light: #fafcff;
+  --toy-fill-color-dark: #ebedf0;
+  --toy-fill-color-darker: #e6e8eb;
+  --toy-fill-color-blank: #ffffff;
+
+  /* border */
+  --toy-border-width: 1px;
+  --toy-border-style: solid;
+  --toy-border-color-hover: var(--toy-text-color-disabled);
+  --toy-border: var(--toy-border-width) var(--toy-border-style) var(--toy-border-color);
+  --toy-border-radius-base: 4px;
+  --toy-border-radius-small: 2px;
+  --toy-border-radius-round: 20px;
+  --toy-border-radius-circle: 100%;
+
+  /*font*/
+  --toy-font-size-extra-large: 20px;
+  --toy-font-size-large: 18px;
+  --toy-font-size-medium: 16px;
+  --toy-font-size-base: 14px;
+  --toy-font-size-small: 13px;
+  --toy-font-size-extra-small: 12px;
+  --toy-font-family:
+    'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei',
+    '\5fae\8f6f\96c5\9ed1', Arial, sans-serif;
+  --toy-font-weight-primary: 500;
+
+  /*disabled*/
+  --toy-disabled-bg-color: var(--toy-fill-color-light);
+  --toy-disabled-text-color: var(--toy-text-color-placeholder);
+  --toy-disabled-border-color: var(--toy-border-color-light);
+
+  /*animation*/
+  --toy-transition-duration: 0.3s;
+  --toy-transition-duration-fast: 0.2s;
+}
