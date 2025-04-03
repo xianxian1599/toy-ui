@@ -25,17 +25,13 @@ export default defineConfig({
       formats: ['umd']
     },
     rollupOptions: {
-      external: ['vue'],
       output: {
-        exports: 'named',
-        globals: {
-          vue: 'Vue'
-        },
-        assetFileNames: (chunkInfo) => {
-          if (chunkInfo.name === 'style.css') {
-            return 'index.css'
+        assetFileNames: (assetInfo) => {
+          if (assetInfo.name?.endsWith('.css')) {
+            return 'index.css';
           }
-          return chunkInfo.name as string
+          // 明确返回字符串，兜底默认文件名
+          return assetInfo.name || 'assets/[name].[hash][extname]';
         }
       }
     }

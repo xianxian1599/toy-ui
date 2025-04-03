@@ -12,7 +12,7 @@ hero:
       link: /guide
     - theme: alt
       text: Github
-      link: /
+      link: https://github.com/xianxian1599/toy-ui/
 
 features:
   - title: vue3

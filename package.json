@@ -1,8 +1,19 @@
 {
-  "name": "toy-ui",
-  "version": "0.0.0",
+  "name": "@xianzi/toy-ui",
+  "version": "0.0.1",
   "description": "Vue3 components library",
   "type": "module",
+  "author": "XianXian",
+  "license": "MIT",
+  "keywords": [
+    "Component",
+    "UI",
+    "Vue3"
+  ], 
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xianxian1599/toy-ui/"
+  },
   "files": [
     "dist"
   ],
@@ -27,13 +38,14 @@
     "build-only": "run-p build-es build-umd",
     "build-umd": "vite build --config vite.umd.config.ts",
     "build-es": "vite build --config vite.es.config.ts",
-    "move-style": "move-file dist/es/toy-ui.css dist/toy-ui.css",
+    "move-style": "move-file dist/es/index.css dist/index.css",
     "type-check": "vue-tsc --build",
     "lint": "eslint . --fix",
     "format": "prettier --write src/",
     "docs:dev": "vitepress dev docs",
     "docs:build": "vitepress build docs",
-    "docs:preview": "vitepress preview docs"
+    "docs:preview": "vitepress preview docs",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
